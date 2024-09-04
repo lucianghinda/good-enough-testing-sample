@@ -1,0 +1,36 @@
+# Booking fixtures
+
+pending_future:
+  account: expirable_account
+  title: "Future booking pending"
+  start_time: <%= 1.day.from_now %>
+  end_time: <%= 2.days.from_now %>
+  status: pending
+
+confirmed_future:
+  account: expirable_account
+  title: "Future booking confirmed"
+  start_time: <%= 3.days.from_now %>
+  end_time: <%= 4.days.from_now %>
+  status: confirmed
+
+canceled_future:
+  title: "Future booking cancelled"
+  account: expired_account
+  start_time: <%= 5.days.from_now %>
+  end_time: <%= 6.days.from_now %>
+  status: cancelled
+
+past_booking:
+  title: "Past booking confirmed"
+  account: expiring_today_account
+  start_time: <%= 2.days.ago %>
+  end_time: <%= 1.day.ago %>
+  status: confirmed
+
+current_booking:
+  title: "Current booking confirmed"
+  account: eternal_account
+  start_time: <%= 1.hour.ago %>
+  end_time: <%= 1.hour.from_now %>
+  status: confirmed

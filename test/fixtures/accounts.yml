@@ -1,0 +1,19 @@
+expirable_account:
+  name: Jenny Doe
+  expires_at: <%= 2.months.from_now.to_date %>
+  website: https://www.example.com
+
+expired_account:
+  name: John Doe
+  expires_at: <%= 10.day.ago.to_date %>
+  website: nil
+
+expiring_today_account:
+  name: Jane Doe
+  expires_at: <%= Date.current %>
+  website: https://www.example.com
+
+eternal_account:
+  name: John Doe
+  expires_at: null
+  website: nil
