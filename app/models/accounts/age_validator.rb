@@ -2,23 +2,17 @@
 
 module Accounts
   class AgeValidator
-    attr_reader :age
+    VALID_AGE_RANGE = 18
 
-    VALID_AGE_RANGE = (18..).freeze
-
-    def initialize(age)
-      @age = validate_age(age)
+    def valid?(age)
+      coerce(age) >= VALID_AGE_RANGE
     end
 
-    def valid?
-      VALID_AGE_RANGE.cover?(age)
-    end
-
-    private
-
-    def validate_age(age)
+    def coerce(age)
       Integer(age).tap do |validated_age|
-        raise NegativeAgeError, "Age must be a natural number" if validated_age.negative?
+        if validated_age.negative?
+          raise NegativeAgeError, "Age must be a natural number"
+        end
       end
     rescue ArgumentError
       raise InvalidAgeError, "Age must be a valid integer"
